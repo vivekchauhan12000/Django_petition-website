@@ -1,11 +1,17 @@
 from django.shortcuts import render
 
+from .forms import CreatePollForm
+from .models import Poll
+
 def home(request):
     context={}
     return render(request,'poll/home.html',context)
 
 def create(request):
-    context={}
+    form=CreatePollForm()
+    context={
+        'form': form
+    }
     return render(request,'poll/create.html',context)
 
 def vote(request , poll_id):
